@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="mb-4">Restaurantes Cadastrados</h2>
+        
+        {% if restaurantes|length == 0 %}
+            <div class="alert alert-info">
+                <p>Nenhum restaurante cadastrado ainda. Clique no botão "Cadastrar Restaurante" para adicionar um novo.</p>
+            </div>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nome do Restaurante</th>
+                            <th>Categoria</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for restaurante in restaurantes %}
+                            <tr>
+                                <td>{{ restaurante.nome }}</td>
+                                <td>{{ restaurante.categoria }}</td>
+                                <td class="text-center">
+                                    {% if restaurante.ativo %}
+                                        <span class="badge bg-success">Ativo</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Inativo</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ url_for('alterar_estado', nome_restaurante=restaurante.nome) }}" class="btn btn-sm {% if restaurante.ativo %}btn-danger{% else %}btn-success{% endif %}">
+                                        {% if restaurante.ativo %}
+                                            <i class="fas fa-toggle-off"></i> Desativar
+                                        {% else %}
+                                            <i class="fas fa-toggle-on"></i> Ativar
+                                        {% endif %}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

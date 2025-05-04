@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h2 class="mb-0">Cadastrar Novo Restaurante</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('cadastrar') }}">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome do Restaurante</label>
+                        <input type="text" class="form-control" id="nome" name="nome" required>
+                        <div class="form-text">Digite o nome completo do restaurante.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label">Categoria</label>
+                        <select class="form-select" id="categoria" name="categoria" required>
+                            <option value="" selected disabled>Selecione uma categoria...</option>
+                            <option value="Brasileira">Brasileira</option>
+                            <option value="Italiana">Italiana</option>
+                            <option value="Japonesa">Japonesa</option>
+                            <option value="Fast Food">Fast Food</option>
+                            <option value="Mexicana">Mexicana</option>
+                            <option value="Árabe">Árabe</option>
+                            <option value="Chinesa">Chinesa</option>
+                            <option value="Vegetariana">Vegetariana</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancelar</a>
+                        <button type="submit" class="btn btn-warning">Cadastrar Restaurante</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
