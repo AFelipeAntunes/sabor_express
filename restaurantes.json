@@ -1,0 +1,17 @@
+[
+    {
+        "nome": "Praça",
+        "categoria": "Japonesa",
+        "ativo": false
+    },
+    {
+        "nome": "Pizza",
+        "categoria": "Italiana",
+        "ativo": true
+    },
+    {
+        "nome": "Feijoada",
+        "categoria": "Brasileiro",
+        "ativo": true
+    }
+]
